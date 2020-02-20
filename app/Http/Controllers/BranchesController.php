@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BranchModel;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Response;
 
 class BranchesController extends Controller
 {
@@ -20,7 +21,11 @@ class BranchesController extends Controller
     	$statusCode = $response->getStatusCode();
     	$body = $response->getBody()->getContents();
 
-    	return $body;
+        $result = json_decode($body);
+
+        $item = $result->data->items[0];
+        $branch = new BranchModel($item);
+        return Response::json($branch->getBranchData());
         // return view('branches', compact('body'));
     }
 

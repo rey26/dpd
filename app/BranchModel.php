@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class BranchModel extends Model
+class BranchModel
 {
  /**
  * @var string
@@ -36,5 +36,19 @@ class BranchModel extends Model
  * @var string
  */
  private $email;
+
+ public function __construct($item){
+     $this->internalId = $item->id;
+     $this->internalName = $item->company;
+     $this->email = $item;
+     $this->phoneNumber = $phoneNumber;
+
+ }
+
+ public function getBranchData(){
+    return get_object_vars($this);
+ }
+
+
 }
 
