@@ -20,8 +20,8 @@ class BranchesController extends Controller
     	$statusCode = $response->getStatusCode();
     	$body = $response->getBody()->getContents();
 
-    	// return $body;
-        return view('branches', compact('body'));
+    	return $body;
+        // return view('branches', compact('body'));
     }
 
     /**
