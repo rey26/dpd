@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BranchModel;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class BranchesController extends Controller
 {
@@ -14,7 +15,13 @@ class BranchesController extends Controller
      */
     public function index()
     {
-        return view('branches');
+        $client = new Client();
+    	$response = $client->request('GET', 'http://www.dpdparcelshop.cz/api/get-all');
+    	$statusCode = $response->getStatusCode();
+    	$body = $response->getBody()->getContents();
+
+    	// return $body;
+        return view('branches', compact('body'));
     }
 
     /**
