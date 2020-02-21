@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'BranchesController@index');
+Route::get('/', function(){
+    return view('branches');
+});
+Route::get('/all-branches', 'BranchesController@allBranches');

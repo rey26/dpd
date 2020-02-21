@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="col-md-10">
-    Hello world
-    {{$body }}
+    <h3>DPD Branches</h3>
+    <div id="root">
+    </div>
 </div>
 @endsection

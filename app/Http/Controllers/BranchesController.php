@@ -14,7 +14,7 @@ class BranchesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function allBranches()
     {
         $client = new Client();
     	$response = $client->request('GET', 'http://www.dpdparcelshop.cz/api/get-all');
@@ -34,6 +34,7 @@ class BranchesController extends Controller
         }
         return Response::json($branches);
     }
+
 
     /**
      * Show the form for creating a new resource.
