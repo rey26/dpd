@@ -14,4 +14,6 @@
 Route::get('/', function(){
     return view('branches');
 });
-Route::get('/all-branches', 'BranchesController@allBranches');
+Route::get('/all-branches', 'BranchesController@getAllBranches');
+Route::get('/detail/{id}', 'BranchesController@branchDetail');
+

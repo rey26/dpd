@@ -32,7 +32,20 @@ class BranchesController extends Controller
             $branch = new BranchModel($item);
             array_push($branches, $branch->getBranchData());
         }
+        return $branches;
+    }
+
+    public function branchDetail($id){
+        $branches = $this->allBranches();
+        foreach($branches as $key => $branch){
+            if($branch['internalId'] != $id)
+                unset($branches[$key]);
+        }
         return Response::json($branches);
+    }
+
+    public function getAllBranches(){
+        return Response::json($this->allBranches());
     }
 
 
