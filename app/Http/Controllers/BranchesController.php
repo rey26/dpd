@@ -18,15 +18,21 @@ class BranchesController extends Controller
     {
         $client = new Client();
     	$response = $client->request('GET', 'http://www.dpdparcelshop.cz/api/get-all');
-    	$statusCode = $response->getStatusCode();
+        $statusCode = $response->getStatusCode();
     	$body = $response->getBody()->getContents();
 
         $result = json_decode($body);
+        if($result->code != 200){
+            return 'External service error';
+        }
 
-        $item = $result->data->items[0];
-        $branch = new BranchModel($item);
-        return Response::json($branch->getBranchData());
-        // return view('branches', compact('body'));
+
+        $branches = array();
+        foreach($result->data->items as $item){
+            $branch = new BranchModel($item);
+            array_push($branches, $branch->getBranchData());
+        }
+        return Response::json($branches);
     }
 
     /**
