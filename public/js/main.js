@@ -21,9 +21,9 @@ function getAllBranches(){
 }
 
 function viewAllBranches(branches){
-    var html = '<ul>';
+    var html = '<ul class="list-group">';
     branches.forEach(function(branch){
-        html += '<li><a href="javascript:void(0);" data-id="' + branch.internalId + '" class="link">' + branch.internalId + ' ' + branch.internalName + '</li>';
+        html += '<li class="list-group-item"><a href="javascript:void(0);" data-id="' + branch.internalId + '" class="link">' + branch.internalId + ' ' + branch.internalName + '</li>';
     })
     html += '</ul>';
 
@@ -49,7 +49,7 @@ function viewBranchDetail(branch){
     html += (branch.location.length > 0) ? '<p>Súradnice: ' + branch.location + '</p>' : '';
     if(branch.businessHours.length > 0){
         var businessHoursHtml = '<p>Otváracie hodiny:<br>';
-        businessHoursHtml += '<table>';
+        businessHoursHtml += '<table class="table">';
         branch.businessHours.forEach(function(day){
             businessHoursHtml += '<tr>';
             businessHoursHtml += '<td>' + day.dayOfWeek + '</td>';
