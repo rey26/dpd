@@ -27,11 +27,13 @@ class BusinessHourModel
     if(strlen($day->openMorning)){
         $result .= $day->openMorning . ' - ';
     }
-    if(strlen($day->closeMorning)){
-        $result .= $day->closeMorning;
-    }
-    if(strlen($day->openAfternoon)){
-        $result .= ', ' . $day->openAfternoon . ' - ';
+    if(strcmp($day->closeMorning, $day->openAfternoon)){
+        if(strlen($day->closeMorning)){
+            $result .= $day->closeMorning;
+        }
+        if(strlen($day->openAfternoon)){
+            $result .= ', ' . $day->openAfternoon . ' - ';
+        }
     }
     if(strlen($day->closeAfternoon)){
         $result .= $day->closeAfternoon;
