@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 function getAllBranches(){
     $.get({
-        url: "all-branches",
+        url: "/api/all-branches",
         success: function(result){
             viewAllBranches(result);
         },
@@ -32,7 +32,7 @@ function viewAllBranches(branches){
 
 function getBranchDetail(id){
     $.get({
-        url: "detail/" + id,
+        url: "/api/detail/" + id,
         success: function(result){
             viewBranchDetail(result);
         },
